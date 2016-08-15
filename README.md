@@ -47,4 +47,4 @@ Commands:
 NOTE: 
 
 * The service monitor is running in the port 1936 and the access is configurated in the docker-compose of the load balancer. 
-* you can use "http://192.168.99.101/status" for check the load balancer status.
+* you can use "http://192.168.99.100/status" for check the load balancer status.
