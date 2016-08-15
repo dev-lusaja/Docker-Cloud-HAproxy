@@ -1,0 +1,23 @@
+web:
+  image: 'dockercloud/hello-world:latest'
+  environment:
+    VIRTUAL_HOST: 'tutum2.dev'
+web2:
+  image: 'dockercloud/hello-world:latest'
+  environment:
+    VIRTUAL_HOST: 'tutum2.dev'
+lb:
+  image: 'dockercloud/haproxy:1.5.3'
+  links:
+    - web
+    - web2
+  external_links:
+    - tutum
+  environment:
+    STATS_AUTH: 'devlusaja:1234567'
+    STATS_PORT: '1936'
+    MONITOR_PORT: '80'
+    MONITOR_URI: '/status'
+  ports:
+    - '1936:1936'
+    - '80:80'
