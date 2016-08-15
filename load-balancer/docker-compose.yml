@@ -1,11 +1,11 @@
 web:
   image: 'dockercloud/hello-world:latest'
   environment:
-    VIRTUAL_HOST: 'tutum2.dev'
+    VIRTUAL_HOST: 'hello.dev'
 web2:
   image: 'dockercloud/hello-world:latest'
   environment:
-    VIRTUAL_HOST: 'tutum2.dev'
+    VIRTUAL_HOST: 'hello.dev'
 lb:
   image: 'dockercloud/haproxy:1.5.3'
   links:
