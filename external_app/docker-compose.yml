@@ -1,0 +1,7 @@
+tutum:
+  container_name: tutum
+  image: tutum/hello-world
+  environment:
+    VIRTUAL_HOST: 'tutum.dev'
+  ports:
+    - 80
