@@ -19,7 +19,7 @@ Commands:
 >
 
     $ cd external_app/
-    $ docker-compose -p external_project up -d
+    $ docker-compose -p externalproject up -d
 
 * Second create the load balancer
 
