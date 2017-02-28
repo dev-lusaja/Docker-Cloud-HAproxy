@@ -7,7 +7,7 @@ Requirements:
 This requirements is only for the example
 
 * Docker Tools (Engine, Compose, Machine).
-* Docker version 1.10.3
+* Docker version 1.13
 
 >
 
@@ -19,7 +19,7 @@ Commands:
 >
 
     $ cd external_app/
-    $ docker-compose up -d
+    $ docker-compose -p external_project up -d
 
 * Second create the load balancer
 
@@ -39,12 +39,13 @@ Commands:
 >
 
 	$ sudo vim /etc/host
-	192.168.99.100 tutun.dev
-	192.168.99.100 hello.dev
+	127.0.0.1 web.dev
+	127.0.0.1 blog.dev
+	127.0.0.1 web2.dev
 
 * Open the domains in your browser and verify the server response
 
 NOTE: 
 
 * The service monitor is running in the port 1936 and the access is configurated in the docker-compose of the load balancer. 
-* you can use "http://192.168.99.100/status" for check the load balancer status.
+* you can use "http://127.0.0.1/status" for check the load balancer status.

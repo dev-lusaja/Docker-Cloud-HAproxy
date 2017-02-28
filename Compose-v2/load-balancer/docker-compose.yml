@@ -1,0 +1,36 @@
+version: '2'
+services:
+  web:
+    image: dockercloud/hello-world
+    environment:
+      VIRTUAL_HOST: web.dev
+
+  blog:
+    image: dockercloud/hello-world
+    environment:
+      VIRTUAL_HOST: blog.dev
+
+  lb:
+    image: dockercloud/haproxy
+    depends_on:
+      - web
+      - blog
+    links:
+      - web
+      - blog
+    environment:
+      ADDITIONAL_SERVICES: externalproject:web
+      STATS_AUTH: 'devlusaja:1234567'
+      STATS_PORT: '1936'
+      MONITOR_PORT: '80'
+      MONITOR_URI: '/status'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+      - 1936:1936
+
+networks:
+  default:
+    external:
+      name: externalproject_network
