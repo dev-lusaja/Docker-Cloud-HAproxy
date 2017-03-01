@@ -46,7 +46,7 @@ $ make down-external-app
 * Uses the make command to up the container
 
 ~~~~
-$ make down-external-app
+$ make up-external-app
 ~~~~
 
 
