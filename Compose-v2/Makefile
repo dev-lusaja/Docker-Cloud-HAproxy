@@ -1,5 +1,7 @@
 .DEFAULT_GOAL := help
 
+PROJECT=externalproject
+
 install: ## install the project
 	@make up-external-app
 	@make up-lb
@@ -13,13 +15,14 @@ reload: ## reload the project
 	@make restart-lb
 
 up-external-app: ## up the external upp
-	docker-compose -p externalproject -f external_app/docker-compose.yml up -d
+	docker-compose -p $(PROJECT) -f external_app/docker-compose.yml up -d
 
 up-lb: ## up docker containers
 	docker-compose -f load-balancer/docker-compose.yml up -d
+	sh load-balancer/hook.sh&
 
 down-external-app: ## Stops and removes the external-app container
-	docker-compose -f external_app/docker-compose.yml down
+	docker-compose -p $(PROJECT) -f external_app/docker-compose.yml down
 
 down-lb: ## Stops and removes the balancer container
 	docker-compose -f load-balancer/docker-compose.yml down

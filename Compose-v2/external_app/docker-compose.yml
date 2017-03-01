@@ -4,6 +4,8 @@ services:
     image: dockercloud/hello-world
     environment:
       VIRTUAL_HOST: web2.dev
+    labels:
+      - lb.hook=true
     networks:
       - network
 

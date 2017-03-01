@@ -32,9 +32,25 @@ $ sudo vim /etc/host
 127.0.0.1 web2.dev
 ~~~~
 
-* Open the domains in your browser and verify the server response
+Testing Balancer Hook:
+----------------------
+ 
+ * Uses the make command to down the container
 
-NOTE: 
+~~~~
+$ make down-external-app
+~~~~
 
+* Open the domains web2.dev in your browser and verify the server response
+
+* Uses the make command to up the container
+
+~~~~
+$ make down-external-app
+~~~~
+
+
+NOTE:
+* the hook only listen the container with label: "lb.hook=true" 
 * The service monitor is running in the port 1936 and the access is configurated in the docker-compose of the load balancer. 
 * you can use "http://127.0.0.1/status" for check the load balancer status.

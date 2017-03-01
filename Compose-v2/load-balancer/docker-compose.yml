@@ -11,6 +11,7 @@ services:
       VIRTUAL_HOST: blog.dev
 
   lb:
+    container_name: balancer
     image: dockercloud/haproxy
     depends_on:
       - web
