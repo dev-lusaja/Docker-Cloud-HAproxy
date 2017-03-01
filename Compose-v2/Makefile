@@ -28,12 +28,10 @@ down-lb: ## Stops and removes the balancer container
 	docker-compose -f load-balancer/docker-compose.yml down
 
 restart-external-app: ## Restart external-app container
-	cd external_app
-	docker-compose restart
+	docker-compose -f external_app/docker-compose.yml restart
 
 restart-lb: ## Restart balancer container
-	cd load-balancer
-	docker-compose restart
+	docker-compose -f load-balancer/docker-compose.yml restart
 
 ssh: ## Connect to container
 	docker exec -it $(CONTAINER) bash
